@@ -89,7 +89,7 @@ public class CartPage {
 			for (int i = 0; i < checkBoxArea.size(); i++) {
 				System.out.println("The list of products in the cart are: ");
 				String ProductNameInCart = brandNameInCart.get(i).getText();
-				System.out.println("The products are " + ProductNameInCart + ".");
+				System.out.println(ProductNameInCart);
 			}
 
 		}

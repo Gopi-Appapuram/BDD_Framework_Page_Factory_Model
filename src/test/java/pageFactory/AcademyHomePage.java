@@ -12,7 +12,7 @@ public class AcademyHomePage {
 	WebDriver driver;
 	SeleniumHighlighterUtility highlighter;
 
-	// Acadamy xpath
+	// Academy xpath
 //	@FindBy(xpath = "//input[@id='search']")
 //	WebElement searchInput;
 

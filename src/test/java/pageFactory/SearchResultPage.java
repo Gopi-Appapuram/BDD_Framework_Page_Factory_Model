@@ -2,6 +2,7 @@ package pageFactory;
 
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -26,8 +27,17 @@ public class SearchResultPage {
 	@FindBys(@FindBy(xpath = "(//ul[@class='results-base']//li[@class='product-base'])"))
 	List<WebElement> productList;
 
-	@FindBys(@FindBy(xpath = "(//ul[@class = 'price-list']//label//input[@type ='checkbox'])"))
+	@FindBys(@FindBy(xpath = "(//ul[@class = 'price-list']/child::li)"))
 	List<WebElement> priceCheckbox;
+
+	@FindBys(@FindBy(xpath = "(//ul[@class = 'brand-list']/child::li)"))
+	List<WebElement> brandCheckbox;
+
+	@FindBys(@FindBy(xpath = "(//ul[@class = 'categories-list']/child::li)"))
+	List<WebElement> catagoriesCheckbox;
+
+	@FindBys(@FindBy(xpath = "(//li//div[@class = 'filter-summary-filter'])"))
+	List<WebElement> filterSummary;
 
 	public SearchResultPage(WebDriver driver) {
 		this.driver = driver;
@@ -53,7 +63,7 @@ public class SearchResultPage {
 		int randomProduct = random.nextInt(maxProducts);
 		// Click on the product
 		scroll.scrollElementIntoView(productList.get(randomProduct));
-		productList.get(randomProduct).click(); 
+		productList.get(randomProduct).click();
 		Thread.sleep(3000);
 //		String mainWindowHandle = driver.getWindowHandle();
 //		// Switch to the new window
@@ -63,7 +73,6 @@ public class SearchResultPage {
 //				break;
 //			}
 //		}
-		
 
 	}
 
@@ -84,23 +93,30 @@ public class SearchResultPage {
 
 		try {
 			priceCheckbox.get(ramdomPriceFilter).click();
-			Thread.sleep(5000);
+			Thread.sleep(3000);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
 	public void FiltersChecked() throws Exception {
-		if (priceCheckbox.get(ramdomPriceFilter).isSelected()) {
-			scroll.scrollElementIntoView(priceCheckbox.get(ramdomPriceFilter));
-			System.out.println("Products are displayed within the range"
-					+ priceCheckbox.get(ramdomPriceFilter).getText() + "price range");
-			Thread.sleep(5000);
+		System.out.println("method is working");
+		int appliedFilters = filterSummary.size();
+		if (priceCheckbox.get(ramdomPriceFilter).getText() != null) {	
+			for (int i = 0; i < appliedFilters; i++) {
+				if (priceCheckbox.get(ramdomPriceFilter).getText() == filterSummary.get(i).getText()) {
+					scroll.scrollElementIntoView(filterSummary.get(i));
+					System.out.println("Products are displayed within the range: " 
+							+ filterSummary.get(i).getText()
+							+ " price range");
+					Thread.sleep(3000);
+				}
+			}
 		} else {
 			scroll.scrollElementIntoView(priceCheckbox.get(ramdomPriceFilter));
 			System.out.println("Price filters are not applied.");
+			driver.quit();
 		}
-		;
 	}
 
 }

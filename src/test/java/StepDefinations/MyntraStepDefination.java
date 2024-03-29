@@ -21,7 +21,7 @@ import pageFactory.ProductDetailsPage;
 import pageFactory.SearchResultPage;
 import pageFactory.WebDriverManager;
 
-public class SearchShirtsStepDefination {
+public class MyntraStepDefination {
 	WebDriver driver;
 	AcademyHomePage homepage;
 	ProductDetailsPage ProductDetails;
@@ -62,7 +62,7 @@ public class SearchShirtsStepDefination {
 	public void i_search_for_in_search_textbox(String productname) {
 		excel.setSheet("TestData");
 		int RowSize = excel.rowCount();
-		Random random = new Random(RowSize);
+		Random random = new Random();
 		int rowNum = random.nextInt(RowSize);
 		productname = excel.readData(rowNum, 0);
 		homepage.searchForProduct(productname);
@@ -130,7 +130,7 @@ public class SearchShirtsStepDefination {
 		    
 		};
 		
-		excel.writeData(0, productDetails);
+		excel.writeData(0, productDetails, "light pind");
 
 	}
 
@@ -217,7 +217,7 @@ public class SearchShirtsStepDefination {
 	}
 
 	@Then("Close the browser")
-	public void close_the_browser() {
+	public void close_the_browser() throws Exception {
 		handels.closeAllTabs();
 		driver.quit();
 	}

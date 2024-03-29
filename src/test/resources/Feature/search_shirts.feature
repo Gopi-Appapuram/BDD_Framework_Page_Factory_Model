@@ -1,5 +1,5 @@
 Feature: Myntra Application Testing
-	
+	@smoke
   Scenario: Search for a product
     Given I am on the Myntra website
     When I search for any "Product_from_the_excel" in the search textbox
@@ -34,8 +34,7 @@ Feature: Myntra Application Testing
     When User removes the items from the cart
     Then User should see an empty cart
     And Close the browser
-
-
+  
  
  
  
