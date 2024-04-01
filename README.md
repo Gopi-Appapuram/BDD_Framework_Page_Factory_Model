@@ -24,28 +24,16 @@
 
 ##  Quick Links
 
-> - [ Repository Structure](##-repository-structure)
-> - [ Modules](##-modules)
-> - [ Getting Started](##-getting-started)
->   - [ Installation](##-installation)
->   - [ Running BDD_Framework_Page_Factory_Model](##-running-BDD_Framework_Page_Factory_Model)
->   - [ Tests](##-tests)
-> - [ Project Roadmap](##-project-roadmap)
-> - [ Contributing](##-contributing)
-> - [ License](##-license)
-> - [ Acknowledgments](##-acknowledgments)
-
----
-
-##  Overview
-
- `overview`
-
----
-
-##  Features
-
- `features`
+> - [ Repository Structure](#-repository-structure)
+> - [ Modules](#-modules)
+> - [ Getting Started](#-getting-started)
+>   - [ Installation](#-installation)
+>   - [ Running BDD_Framework_Page_Factory_Model](#-running-BDD_Framework_Page_Factory_Model)
+>   - [ Tests](#-tests)
+> - [ Project Roadmap](#-project-roadmap)
+> - [ Contributing](#-contributing)
+> - [ License](#-license)
+> - [ Acknowledgments](#-acknowledgments)
 
 ---
 
