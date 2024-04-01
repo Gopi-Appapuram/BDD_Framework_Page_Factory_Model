@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://banner2.cleanpng.com/20180806/xkl/kisspng-cucumber-behavior-driven-development-software-test-cucumber-logo-svg-vector-amp-png-transparent-v-5b68353a7fad14.236653821533556026523.jpg" width="250" />
+  <img src="https://img.shields.io/badge/cucumber-%013220.svg?style=flat&logo=cucumber&logoColor=white" width="250" />
 </p>
 <p align="center">
     <h1 align="center">BDD_FRAMEWORK_PAGE_FACTORY_MODEL</h1>
