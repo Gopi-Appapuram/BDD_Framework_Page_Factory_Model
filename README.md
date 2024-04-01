@@ -14,7 +14,8 @@
 		<em>Developed with the software and tools below.</em>
 </p>
 <p align="center">
-    <img src="	https://user-images.githubusercontent.com/25181517/184103699-d1b83c07-2d83-4d99-9a1e-83bd89e08117.png" alt="Selinum">
+	<img src="https://img.shields.io/badge/Selinum-%90EE90.svg?style=flat&logo=selenium&logoColor=white" alt="selenium">
+   	 <img src="https://img.shields.io/badge/cucumber-%013220.svg?style=flat&logo=cucumber&logoColor=white" alt="Cucumber">
 	<img src="https://img.shields.io/badge/java-%23ED8B00.svg?style=flat&logo=openjdk&logoColor=white" alt="java">
 	<img src="https://img.shields.io/badge/JavaScript-F7DF1E.svg?style=flat&logo=JavaScript&logoColor=black" alt="JavaScript">
 	<img src="https://img.shields.io/badge/HTML5-E34F26.svg?style=flat&logo=HTML5&logoColor=white" alt="HTML5">
