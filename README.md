@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Selenium_logo.svg/768px-Selenium_logo.svg.png" width="100" />
+  <img src="https://blog.knoldus.com/wp-content/uploads/2020/04/Blog9_featureImage.png" width="250" />
 </p>
 <p align="center">
     <h1 align="center">BDD_FRAMEWORK_PAGE_FACTORY_MODEL</h1>
