@@ -1,4 +1,4 @@
-package pageFactory;
+package Pages;
 
 import java.util.List;
 import java.util.Random;
@@ -100,7 +100,7 @@ public class SearchResultPage {
 	}
 
 	public void FiltersChecked() throws Exception {
-		System.out.println("method is working");
+		//System.out.println("method is working");
 		int appliedFilters = filterSummary.size();
 		if (priceCheckbox.get(ramdomPriceFilter).getText() != null) {	
 			for (int i = 0; i < appliedFilters; i++) {

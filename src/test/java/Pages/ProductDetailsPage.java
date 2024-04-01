@@ -1,4 +1,4 @@
-package pageFactory;
+package Pages;
 
 import java.util.List;
 import java.util.Random;

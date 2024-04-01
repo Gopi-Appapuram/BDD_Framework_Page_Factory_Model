@@ -1,4 +1,4 @@
-package pageFactory;
+package Pages;
 
 public class CapthaPage {
 

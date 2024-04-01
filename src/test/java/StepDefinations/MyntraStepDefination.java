@@ -6,6 +6,11 @@ import java.util.Random;
 import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 
+import Pages.AcademyHomePage;
+import Pages.CartPage;
+import Pages.ProductDetailsPage;
+import Pages.SearchResultPage;
+import Pages.WebDriverManager;
 import Utility.ExcelUtility;
 import Utility.ScreenshotUtility;
 import Utility.SeleniumHighlighterUtility;
@@ -15,11 +20,6 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import pageFactory.AcademyHomePage;
-import pageFactory.CartPage;
-import pageFactory.ProductDetailsPage;
-import pageFactory.SearchResultPage;
-import pageFactory.WebDriverManager;
 
 public class MyntraStepDefination {
 	WebDriver driver;
@@ -49,7 +49,7 @@ public class MyntraStepDefination {
 		cart = new CartPage(driver);
 		handels = new WindowHangels(driver);
 		String path = "D:\\ESoft_Solutions\\AutomationPractice\\BDD_Framework\\Myntra.xlsx";
-		excel = new ExcelUtility(path);		
+		excel = new ExcelUtility(path);
 	}
 
 	@Given("I am on the Myntra website")
@@ -122,14 +122,23 @@ public class MyntraStepDefination {
 		System.out.println("Product Name: " + ProductDetails.getProductName());
 		System.out.println("Product Price: " + ProductDetails.getProductPrice());
 		excel.setSheet("Product_Details");
-		
+
+		String ProductBrand = ProductDetails.getProductBrand();
+		String ProductName = ProductDetails.getProductName();
+		String ProductPrice = ProductDetails.getProductPrice();
+
+		String[] arrOfStr = ProductPrice.split("₹");
+		for (String price : arrOfStr) {
+			ProductPrice = price;
+		}
+
 		String[] productDetails = {
-		    ProductDetails.getProductBrand(),
-		    ProductDetails.getProductName(),
-		    ProductDetails.getProductPrice()
-		    
+				ProductBrand,
+				ProductName,
+				ProductPrice
+
 		};
-		
+
 		excel.writeData(0, productDetails, "light pind");
 
 	}
