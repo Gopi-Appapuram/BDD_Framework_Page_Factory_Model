@@ -9,7 +9,7 @@ import io.cucumber.testng.CucumberOptions;
 		glue = { "StepDefinations" }, 
 		plugin = {
 					"pretty", 
-					"html:target/htmlreport.html" 
+					"html:test-output/CucumberReports/htmlreport.html" 
 					}
 		)
 
