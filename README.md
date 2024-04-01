@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://blog.knoldus.com/wp-content/uploads/2020/04/Blog9_featureImage.png" width="250" />
+  <img src="https://automationpanda.com/wp-content/uploads/2017/10/cucumber-logo-d727c551ce-seeklogo-com.png?w=620" width="250" />
 </p>
 <p align="center">
     <h1 align="center">BDD_FRAMEWORK_PAGE_FACTORY_MODEL</h1>
