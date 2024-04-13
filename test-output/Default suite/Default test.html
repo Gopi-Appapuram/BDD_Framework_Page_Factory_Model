@@ -55,11 +55,11 @@ function toggleAllBoxes() {
 <body>
 <h2 align='center'>Default test</h2><table border='1' align="center">
 <tr>
-<td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
+<td>Tests passed/Failed/Skipped:</td><td>4/2/0</td>
 </tr><tr>
-<td>Started on:</td><td>Wed Apr 03 16:08:32 IST 2024</td>
+<td>Started on:</td><td>Sat Apr 13 17:13:33 IST 2024</td>
 </tr>
-<tr><td>Total time:</td><td>7 seconds (7819 ms)</td>
+<tr><td>Total time:</td><td>156 seconds (156690 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -76,71 +76,86 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='StepDefinations.MyntraStepDefination2.i_am_on_myntra_website()'><b>i_am_on_myntra_website</b><br>Test class: StepDefinations.MyntraStepDefination2</td>
-<td><div><pre>java.lang.NullPointerException
-	at StepDefinations.MyntraStepDefination2.i_am_on_myntra_website(MyntraStepDefination2.java:51)
+<td title='TestRunner.CucumberTestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunner.CucumberTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Remove product from cart", "Myntra Application Testing"</td>
+<td><div><pre>java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+	at java.base/java.util.Objects.checkIndex(Objects.java:372)
+	at java.base/java.util.ArrayList.get(ArrayList.java:459)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace1541075662", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1541075662'><pre>java.lang.NullPointerException
-	at StepDefinations.MyntraStepDefination2.i_am_on_myntra_website(MyntraStepDefination2.java:51)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler.invoke(LocatingElementListHandler.java:39)
+	at com.sun.proxy.$Proxy26.get(Unknown Source)
+	at Pages.CartPage.removeAllItems(CartPage.java:94)
+	at StepDefinations.MyntraStepDefination.user_removes_the_items_from_the_cart(MyntraStepDefination.java:195)
+	at ✽.User removes the items from the cart(file:///D:/ESoft_Solutions/AutomationPractice/BDD_Framework/src/test/resources/Feature/search_shirts.feature:34)
+</pre></div><a href='#' onClick='toggleBox("stack-trace79791382", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace79791382'><pre>java.lang.IndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at java.base/jdk.internal.util.Preconditions.outOfBounds(Preconditions.java:64)
+	at java.base/jdk.internal.util.Preconditions.outOfBoundsCheckIndex(Preconditions.java:70)
+	at java.base/jdk.internal.util.Preconditions.checkIndex(Preconditions.java:248)
+	at java.base/java.util.Objects.checkIndex(Objects.java:372)
+	at java.base/java.util.ArrayList.get(ArrayList.java:459)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
-	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:139)
-	at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:664)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:228)
-	at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
-	at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:961)
-	at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:201)
-	at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:148)
-	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
-	at java.base/java.util.ArrayList.forEach(ArrayList.java:1541)
-	at org.testng.TestRunner.privateRun(TestRunner.java:819)
-	at org.testng.TestRunner.run(TestRunner.java:619)
-	at org.testng.SuiteRunner.runTest(SuiteRunner.java:443)
-	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:437)
-	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:397)
-	at org.testng.SuiteRunner.run(SuiteRunner.java:336)
-	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1301)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1228)
-	at org.testng.TestNG.runSuites(TestNG.java:1134)
-	at org.testng.TestNG.run(TestNG.java:1101)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+	at org.openqa.selenium.support.pagefactory.internal.LocatingElementListHandler.invoke(LocatingElementListHandler.java:39)
+	at com.sun.proxy.$Proxy26.get(Unknown Source)
+	at Pages.CartPage.removeAllItems(CartPage.java:94)
+	at StepDefinations.MyntraStepDefination.user_removes_the_items_from_the_cart(MyntraStepDefination.java:195)
+	at ✽.User removes the items from the cart(file:///D:/ESoft_Solutions/AutomationPractice/BDD_Framework/src/test/resources/Feature/search_shirts.feature:34)
 </pre></div></td>
-<td>7</td>
-<td>StepDefinations.MyntraStepDefination2@31ea9581</td></tr>
+<td>9</td>
+<td>TestRunner.CucumberTestRunner@387a8303</td></tr>
+<tr>
+<td title='TestRunner.CucumberTestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunner.CucumberTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Navigate to search  page", "Myntra Application Testing"</td>
+<td><div><pre>java.lang.IllegalArgumentException: bound must be positive
+	at java.base/java.util.Random.nextInt(Random.java:388)
+	at Pages.SearchResultPage.clickOnAnyItem(SearchResultPage.java:86)
+	at StepDefinations.MyntraStepDefination.i_Select_Another_Product_From_List(MyntraStepDefination.java:188)
+	at ✽.I select another product with any index from the list(file:///D:/ESoft_Solutions/AutomationPractice/BDD_Framework/src/test/resources/Feature/search_shirts.feature:26)
+</pre></div><a href='#' onClick='toggleBox("stack-trace1487365582", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1487365582'><pre>java.lang.IllegalArgumentException: bound must be positive
+	at java.base/java.util.Random.nextInt(Random.java:388)
+	at Pages.SearchResultPage.clickOnAnyItem(SearchResultPage.java:86)
+	at StepDefinations.MyntraStepDefination.i_Select_Another_Product_From_List(MyntraStepDefination.java:188)
+	at ✽.I select another product with any index from the list(file:///D:/ESoft_Solutions/AutomationPractice/BDD_Framework/src/test/resources/Feature/search_shirts.feature:26)
+</pre></div></td>
+<td>30</td>
+<td>TestRunner.CucumberTestRunner@387a8303</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td><b>Attribute(s)</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='TestRunner.CucumberTestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunner.CucumberTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Get product name and price", "Myntra Application Testing"</td>
+<td></td>
+<td>5</td>
+<td>TestRunner.CucumberTestRunner@387a8303</td></tr>
+<tr>
+<td title='TestRunner.CucumberTestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunner.CucumberTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Search for a product", "Myntra Application Testing"</td>
+<td></td>
+<td>20</td>
+<td>TestRunner.CucumberTestRunner@387a8303</td></tr>
+<tr>
+<td title='TestRunner.CucumberTestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunner.CucumberTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Add a product to Cart", "Myntra Application Testing"</td>
+<td></td>
+<td>47</td>
+<td>TestRunner.CucumberTestRunner@387a8303</td></tr>
+<tr>
+<td title='TestRunner.CucumberTestRunner.runScenario()'><b>runScenario</b><br>Test class: TestRunner.CucumberTestRunner<br>Test method: Runs Cucumber Scenarios<br>Parameters: "Appaly filters for products by price range and select an item", "Myntra Application Testing"</td>
+<td></td>
+<td>41</td>
+<td>TestRunner.CucumberTestRunner@387a8303</td></tr>
 </table><p>
 </body>
 </html>
