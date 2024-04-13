@@ -2,7 +2,7 @@ Feature: Myntra Application Testing
 	@smoke
   Scenario: Search for a product
     Given I am on the Myntra website
-    When I search for any "Product_from_the_excel" in the search textbox
+    When I search for any "<Product_from_the_excel>" in the search textbox
     Then I can see list of product list page
 
   Scenario: Appaly filters for products by price range and select an item

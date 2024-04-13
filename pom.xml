@@ -5,7 +5,7 @@
 	<groupId>BDD_Framework</groupId>
 	<artifactId>BDD_Framework</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<properties>
 		<!-- Dependency Versions -->
 		<cucumber-java.version>7.13.0</cucumber-java.version>
@@ -17,6 +17,7 @@
 		<poi.version>4.1.2</poi.version>
 		<poi-ooxml.version>4.1.2</poi-ooxml.version>
 		<maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+		<webdrivermanager.version>5.7.0</webdrivermanager.version>
 		<!-- End of Dependency Versions -->
 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -26,6 +27,13 @@
 	</properties>
 
 	<dependencies>
+		<!-- Web Driver Manager Depandencies -->
+		<dependency>
+			<groupId>io.github.bonigarcia</groupId>
+			<artifactId>webdrivermanager</artifactId>
+			<version>${webdrivermanager.version}</version>
+		</dependency>
+
 		<!-- Cucumber Dependencies -->
 		<dependency>
 			<groupId>io.cucumber</groupId>

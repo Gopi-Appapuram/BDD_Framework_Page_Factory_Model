@@ -14,6 +14,12 @@ import Utility.ScreenshotUtility;
 import Utility.ScrollUtility;
 import Utility.SeleniumHighlighterUtility;
 
+/**
+ * @author Gopi Appapuram
+ * 
+ * This class represents the Search Result Page of the application.
+ * It contains methods to interact with elements on the Search Result Page.
+ */
 public class SearchResultPage {
 
 	WebDriver driver;
@@ -21,9 +27,11 @@ public class SearchResultPage {
 	ScreenshotUtility screenshot;
 	ScrollUtility scroll;
 
-//	@FindBys(@FindBy(xpath = "(//div[contains(@class,'product-detail-container')])")) //(//ul[@class='results-base']//li)
-//	List<WebElement> productList;
-
+	/*
+	 * Web Elements on the Search Result Page
+	 * 
+	 */
+	
 	@FindBys(@FindBy(xpath = "(//ul[@class='results-base']//li[@class='product-base'])"))
 	List<WebElement> productList;
 
@@ -34,11 +42,16 @@ public class SearchResultPage {
 	List<WebElement> brandCheckbox;
 
 	@FindBys(@FindBy(xpath = "(//ul[@class = 'categories-list']/child::li)"))
-	List<WebElement> catagoriesCheckbox;
+	List<WebElement> categoriesCheckbox;
 
 	@FindBys(@FindBy(xpath = "(//li//div[@class = 'filter-summary-filter'])"))
 	List<WebElement> filterSummary;
 
+	/**
+	 * Constructor to initialize the Search Result Page
+	 * 
+	 * @param driver The WebDriver instance
+	 */
 	public SearchResultPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -46,6 +59,11 @@ public class SearchResultPage {
 		this.highlighter = new SeleniumHighlighterUtility(driver);
 	}
 
+	/**
+	 * Method to check if the product list is displayed
+	 * 
+	 * @return true if product list is displayed, false otherwise
+	 */
 	public boolean isProdListDisplayed() {
 		int prodlist = productList.size();
 		try {
@@ -57,6 +75,11 @@ public class SearchResultPage {
 		}
 	}
 
+	/**
+	 * Method to click on any random item in the product list
+	 * 
+	 * @throws Exception
+	 */
 	public void clickOnAnyItem() throws Exception {
 		int maxProducts = productList.size();
 		Random random = new Random();
@@ -65,46 +88,50 @@ public class SearchResultPage {
 		scroll.scrollElementIntoView(productList.get(randomProduct));
 		productList.get(randomProduct).click();
 		Thread.sleep(3000);
-//		String mainWindowHandle = driver.getWindowHandle();
-//		// Switch to the new window
-//		for (String windowHandle : driver.getWindowHandles()) {
-//			if (!windowHandle.equals(mainWindowHandle)) {
-//				driver.switchTo().window(windowHandle);
-//				break;
-//			}
-//		}
-
 	}
 
+	/**
+	 * Method to get the title of the search result page
+	 * 
+	 * @return The title of the search result page
+	 */
 	public String searchPageTitle() {
 		String title = driver.getTitle();
 		return title;
 	}
 
+	// Variables for Price Range Filter
 	int maxPriceFilters;
-	int ramdomPriceFilter;
+	int randomPriceFilter;
 
+	/**
+	 * Method to select a random price range filter
+	 */
 	public void selectPriceRange() {
 		Random random = new Random();
 		maxPriceFilters = priceCheckbox.size();
-		System.out.println("Total no of proce filter are: " + maxPriceFilters);
-		ramdomPriceFilter = random.nextInt(maxPriceFilters);
-		scroll.scrollElementIntoView(priceCheckbox.get(ramdomPriceFilter));
+		System.out.println("Total no of price filters are: " + maxPriceFilters);
+		randomPriceFilter = random.nextInt(maxPriceFilters);
+		scroll.scrollElementIntoView(priceCheckbox.get(randomPriceFilter));
 
 		try {
-			priceCheckbox.get(ramdomPriceFilter).click();
+			priceCheckbox.get(randomPriceFilter).click();
 			Thread.sleep(3000);
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	public void FiltersChecked() throws Exception {
-		//System.out.println("method is working");
+	/**
+	 * Method to check if the applied filters are displayed in the filter summary
+	 * 
+	 * @throws Exception
+	 */
+	public void filtersChecked() throws Exception {
 		int appliedFilters = filterSummary.size();
-		if (priceCheckbox.get(ramdomPriceFilter).getText() != null) {	
+		if (priceCheckbox.get(randomPriceFilter).getText() != null) {	
 			for (int i = 0; i < appliedFilters; i++) {
-				if (priceCheckbox.get(ramdomPriceFilter).getText() == filterSummary.get(i).getText()) {
+				if (priceCheckbox.get(randomPriceFilter).getText().equals(filterSummary.get(i).getText())) {
 					scroll.scrollElementIntoView(filterSummary.get(i));
 					System.out.println("Products are displayed within the range: " 
 							+ filterSummary.get(i).getText()
@@ -113,7 +140,7 @@ public class SearchResultPage {
 				}
 			}
 		} else {
-			scroll.scrollElementIntoView(priceCheckbox.get(ramdomPriceFilter));
+			scroll.scrollElementIntoView(priceCheckbox.get(randomPriceFilter));
 			System.out.println("Price filters are not applied.");
 			driver.quit();
 		}

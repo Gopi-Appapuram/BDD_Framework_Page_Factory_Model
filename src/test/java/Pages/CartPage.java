@@ -12,6 +12,12 @@ import Utility.ScreenshotUtility;
 import Utility.ScrollUtility;
 import Utility.SeleniumHighlighterUtility;
 
+/**
+ * @author Gopi Appapuram
+ * 
+ * This class represents the Cart Page of the application.
+ * It contains methods to interact with elements on the Cart Page.
+ */
 public class CartPage {
 
 	WebDriver driver;
@@ -19,6 +25,11 @@ public class CartPage {
 	ScrollUtility scroll;
 	ScreenshotUtility screenshot;
 
+	/*
+	 * List of Web Elements on the Cart Page
+	 * 
+	 */
+	
 	@FindBys(@FindBy(xpath = "(//div[contains(@class,'itemContainer-base-brand')])"))
 	List<WebElement> brandNameInCart;
 
@@ -34,6 +45,11 @@ public class CartPage {
 	@FindBys(@FindBy(xpath = "(//button[contains(text(),'REMOVE')])"))
 	List<WebElement> removeButton;
 
+	/**
+	 * Constructor to initialize the Cart Page
+	 * 
+	 * @param driver The WebDriver instance
+	 */
 	public CartPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -41,11 +57,16 @@ public class CartPage {
 		this.highlighter = new SeleniumHighlighterUtility(driver);
 	}
 
+	/**
+	 * Method to select all items from the cart
+	 * 
+	 * @throws InterruptedException
+	 */
 	public void selectAllItemsFromCart() throws InterruptedException {
 		if (brandNameInCart.isEmpty()) {
 	        System.out.println("Cart is already empty");
 	    } else {
-			for (int i = 0; i >= checkBoxArea.size(); i++) {
+			for (int i = 0; i < checkBoxArea.size(); i++) {
 				WebElement checkbox = checkBoxArea.get(i);
 				scroll.scrollElementIntoView(checkbox);
 				// highlighter.highlightElement(checkbox);
@@ -57,12 +78,15 @@ public class CartPage {
 					checkbox.click();
 					Thread.sleep(3000);
 				}
-
 			}
-
 		}
 	}
 
+	/**
+	 * Method to remove all items from the cart
+	 * 
+	 * @throws Exception
+	 */
 	public void removeAllItems() throws Exception {
 		highlighter.highlightElement(removeButton.get(0));
 		removeButton.get(0).click();
@@ -70,28 +94,21 @@ public class CartPage {
 		highlighter.highlightElement(removeButton.get(1));
 		removeButton.get(1).click();
 		Thread.sleep(5000);
-
 	}
 
-	/*
-	 * public void isItemsAvilableInCart() { if(productCheckbox.isEmpty()) {
-	 * System.out.println("No Products In The Cart"); }else {
-	 * highlighter.highlightElements(brandNameInCart);
-	 * System.out.println("Items are avilable in the cart"); } }
+	/**
+	 * Method to check if the cart is empty
 	 */
-
 	public void isCartEmpty() {
 		if (checkBoxArea.isEmpty()) {
 			System.out.println("Cart is empty");
-			
 		} else {
 			// highlighter.highlightElements(productCheckbox);
 			for (int i = 0; i < checkBoxArea.size(); i++) {
 				System.out.println("The list of products in the cart are: ");
-				String ProductNameInCart = brandNameInCart.get(i).getText();
-				System.out.println(ProductNameInCart);
+				String productNameInCart = brandNameInCart.get(i).getText();
+				System.out.println(productNameInCart);
 			}
-
 		}
 	}
 }

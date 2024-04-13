@@ -13,19 +13,24 @@ import Utility.ScreenshotUtility;
 import Utility.ScrollUtility;
 import Utility.SeleniumHighlighterUtility;
 
+/**
+ * @author Gopi Appapuram
+ * 
+ * This class represents the Product Details Page of the application.
+ * It contains methods to interact with elements on the Product Details Page.
+ */
 public class ProductDetailsPage {
 
 	WebDriver driver;
 	SeleniumHighlighterUtility highlighter;
 	ScreenshotUtility screenshot;
 	ScrollUtility scroll;
-//	@FindBy(xpath = "//h1[@data-auid='PDP_ProductName']")
-//	WebElement productName;
-//	
-//	@FindBy(xpath = "//div[@data-auid='regPrice'])[1]")
-//	WebElement productPrice;
-//	
 
+	/*
+	 * Web Elements on the Product Details Page
+	 * 
+	 */
+	
 	@FindBy(xpath = "//h1[contains(@class,'pdp-title')]")
 	WebElement productBrand;
 
@@ -59,6 +64,11 @@ public class ProductDetailsPage {
 	@FindBy(xpath = "//span[contains(@class,'desktop-iconBag')]")
 	WebElement cartIcon;
 
+	/**
+	 * Constructor to initialize the Product Details Page
+	 * 
+	 * @param driver The WebDriver instance
+	 */
 	public ProductDetailsPage(WebDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
@@ -66,38 +76,69 @@ public class ProductDetailsPage {
 		this.scroll = new ScrollUtility(driver);
 	}
 
-	// Returns the Product name
+	/**
+	 * Method to get the product name
+	 * 
+	 * @return The product name
+	 */
 	public String getProductName() {
 		highlighter.highlightElement(productName);
 		return productName.getText();
 	}
 
-	// Returns the product brand
+	/**
+	 * Method to get the product brand
+	 * 
+	 * @return The product brand
+	 */
 	public String getProductBrand() {
 		highlighter.highlightElement(productBrand);
 		return productBrand.getText();
 	}
 
-	// Returns the Product price
+	/**
+	 * Method to get the product price
+	 * 
+	 * @return The product price
+	 */
 	public String getProductPrice() {
 		highlighter.highlightElement(productPrice);
 		return productPrice.getText();
 	}
 
-	public Boolean ProdPriceisDisplayed() {
+	/**
+	 * Method to check if product price is displayed
+	 * 
+	 * @return true if product price is displayed, false otherwise
+	 */
+	public Boolean prodPriceIsDisplayed() {
 		return productPrice.isDisplayed();
 	}
 
-	public Boolean ProdNameisDisplayed() {
+	/**
+	 * Method to check if product name is displayed
+	 * 
+	 * @return true if product name is displayed, false otherwise
+	 */
+	public Boolean prodNameIsDisplayed() {
 		return productName.isDisplayed();
 	}
 
-	public String productDetaiMetaTitle() {
-		String pageTittle = driver.getTitle();
-		return pageTittle;
-
+	/**
+	 * Method to get the title of the product details page
+	 * 
+	 * @return The title of the product details page
+	 */
+	public String getProductDetailPageTitle() {
+		String pageTitle = driver.getTitle();
+		return pageTitle;
 	}
 
+	/**
+	 * Method to select a random product colour
+	 * 
+	 * @throws Exception
+	 */
 	public void selectProductColour() throws Exception {
 		int maxProductColours = productColour.size();
 		if (maxProductColours >= 0) {
@@ -113,6 +154,11 @@ public class ProductDetailsPage {
 
 	}
 
+	/**
+	 * Method to select a random product size
+	 * 
+	 * @throws Exception
+	 */
 	public void selectProductSize() throws Exception {
 		int maxProductSizes = productSize.size();
 		Random random = new Random();
@@ -128,6 +174,11 @@ public class ProductDetailsPage {
 
 	}
 
+	/**
+	 * Method to add the product to the bag
+	 * 
+	 * @throws Exception
+	 */
 	public void addToBag() throws Exception {
 		highlighter.highlightElement(addToBag);
 		addToBag.click();
@@ -138,28 +189,13 @@ public class ProductDetailsPage {
 			System.out.println("Please try again to add the product to the cart");
 		}
 		Thread.sleep(3000);
-//		if (addToBag.getText().equals("GO TO BAG")) {
-//			System.out.println("Product added successfully");
-//			if (nofCartItems.isDisplayed()) {
-//				highlighter.highlightElement(nofCartItems);
-//				System.out.println("No.Of Products In Cart: " + nofCartItems.getText() + " Items.");
-//			} else {
-//				System.out.println("No products in the cart");
-//			}
-//		}else{
-//		System.out.println("Please try again to add the product to the cart");
-//		}
 	}
 
-//	public void nofItemsInCart() {
-//		if (nofCartItems.isDisplayed()) {
-//			highlighter.highlightElement(nofCartItems);
-//			System.out.println("No.Of Products In Cart: " + nofCartItems.getText() + " Items.");
-//		} else {
-//			System.out.println("No products in the cart");
-//		}
-//	}
-
+	/**
+	 * Method to click on the Cart icon
+	 * 
+	 * @throws Exception
+	 */
 	public void clickCartIcon() throws Exception {
 		highlighter.highlightElement(cartIcon);
 		cartIcon.click();
@@ -167,21 +203,20 @@ public class ProductDetailsPage {
 		if (driver.getTitle().equals("SHOPPING BAG")) {
 			System.out.println("You are in CART page");
 		} else {
-			System.out.println("You are in " + driver.getTitle() + " page\"");
+			System.out.println("You are in " + driver.getTitle() + " page");
 		}
 	}
-	
-	public void CartPageTitle() {
-		
-	}
 
+	/**
+	 * Method to click on the Wishlist icon
+	 */
 	public void clickWishListIcon() {
 		wishListIcon.click();
 		if (driver.getTitle().equals("Wishlist")) {
 			highlighter.highlightElement(wishListIcon);
-			System.out.println("You are in CART page");
+			System.out.println("You are in WISHLIST page");
 		} else {
-			System.out.println("You are in " + driver.getTitle() + " page\"");
+			System.out.println("You are in " + driver.getTitle() + " page");
 		}
 	}
 

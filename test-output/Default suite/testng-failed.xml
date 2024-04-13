@@ -3,13 +3,11 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="TestRunner.CucumberTestRunner">
+      <class name="StepDefinations.MyntraStepDefination2">
         <methods>
-          <include name="setUpClass"/>
-          <include name="tearDownClass"/>
-          <include name="runScenario" invocation-numbers="3 4 5"/>
+          <include name="i_am_on_myntra_website"/>
         </methods>
-      </class> <!-- TestRunner.CucumberTestRunner -->
+      </class> <!-- StepDefinations.MyntraStepDefination2 -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
