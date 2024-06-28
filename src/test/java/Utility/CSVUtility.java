@@ -108,6 +108,37 @@ public class CSVUtility {
         return dataMap;
     }
 
+    /**
+     * Read data from the CSV file and return as a list of LinkedHashMaps,
+     * where each LinkedHashMap represents a row with headers as keys and row data as values.
+     *
+     * @return A list of LinkedHashMaps where keys are headers and values are row data.
+     */
+    public List<LinkedHashMap<String, String>> readDataAsListOfMaps() {
+        List<LinkedHashMap<String, String>> dataList = new ArrayList<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String headerLine = br.readLine();
+            if (headerLine != null) {
+                String[] headers = headerLine.split(delimiter);
+
+                String line;
+                while ((line = br.readLine()) != null) {
+                    String[] values = line.split(delimiter);
+                    LinkedHashMap<String, String> rowMap = new LinkedHashMap<>();
+                    for (int i = 0; i < values.length && i < headers.length; i++) {
+                        rowMap.put(headers[i], values[i]);
+                    }
+                    dataList.add(rowMap);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return dataList;
+    }
+
     // Other methods as needed: findNextEmptyRow, rowCount, etc.
 }
 

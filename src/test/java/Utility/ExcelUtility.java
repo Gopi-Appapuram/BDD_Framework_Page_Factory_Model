@@ -216,6 +216,7 @@ public class ExcelUtility {
         return dataMap;
     }
 
+
     /**
      * Read data from the Excel sheet and return as a LinkedHashMap.
      *
@@ -253,21 +254,57 @@ public class ExcelUtility {
         return dataMap;
     }
 
+    /**
+     * Read data from the Excel sheet and return as a list of LinkedHashMaps,
+     * where each LinkedHashMap represents a row with headers as keys and row data as values.
+     *
+     * @return A list of LinkedHashMaps where keys are headers and values are row data.
+     */
+    public List<LinkedHashMap<String, String>> readDataAsListOfMaps() {
+        List<LinkedHashMap<String, String>> dataList = new ArrayList<>();
+        int rows = sheet.getPhysicalNumberOfRows();
+
+        // Read headers from the first row
+        Row headerRow = sheet.getRow(0);
+        List<String> headers = new ArrayList<>();
+        for (Cell cell : headerRow) {
+            headers.add(cell.getStringCellValue());
+        }
+
+        // Read data for each row starting from the second row
+        for (int rowNum = 1; rowNum < rows; rowNum++) {
+            Row row = sheet.getRow(rowNum);
+            if (row != null) {
+                LinkedHashMap<String, String> rowData = new LinkedHashMap<>();
+                for (int colNum = 0; colNum < headers.size(); colNum++) {
+                    Cell cell = row.getCell(colNum);
+                    String cellValue = (cell == null) ? "" : cell.toString();
+                    String header = headers.get(colNum);
+                    rowData.put(header, cellValue);
+                }
+                dataList.add(rowData);
+            }
+        }
+
+        return dataList;
+    }
+
     @Test
     public void test() {
         ExcelUtility excelUtility = new ExcelUtility("D:\\ESoft_Solutions\\AutomationPractice\\BDD_Framework\\Myntra.xlsx");
         excelUtility.setSheet(1);
-        LinkedHashMap<String, List<String>> dataMap = excelUtility.readDataAsLinkedHashMap();
+        List<LinkedHashMap<String, String>> dataMap = excelUtility.readDataAsListOfMaps();
+        for (int i = 0; i < dataMap.size(); i++) {
 
-        // Print dataMap
-        for (Map.Entry<String, List<String>> entry : dataMap.entrySet()) {
-            String header = entry.getKey();
-            List<String> values = entry.getValue();
-
-            System.out.println("Header: " + header);
-            System.out.println("Values: " + values);
-            System.out.println();
+            System.out.println(dataMap.get(i));
         }
+//        // Print dataMap
+//        for (Map.Entry<String, List<String>> entry : dataMap.entrySet()) {
+//            String header = entry.getKey();
+//            List<String> values = entry.getValue();
+//
+//            System.out.println();
+//        }
 
         excelUtility.close();
 

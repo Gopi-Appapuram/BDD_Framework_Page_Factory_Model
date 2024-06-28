@@ -53,8 +53,8 @@ public class test {
         WebDriver driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://datatables.net/extensions/buttons/examples/initialisation/export.html");
-        LinkedHashMap<String, List<String>> Data = extractTableData(driver);
-        System.out.println(Data);
+        //LinkedHashMap<String, List<String>> Data = extractTableData(driver);
+        //System.out.println(Data);
         //driver.close();
     }
 
@@ -110,6 +110,56 @@ public class test {
 
         // Return the populated tableData LinkedHashMap
         return tableData;
+    }
+
+    /**
+     * Extracts data from an HTML table and returns it as a list of LinkedHashMaps.
+     * Each LinkedHashMap represents a table row with headers as keys and row data as values.
+     *
+     * @param driver       The WebDriver instance controlling the browser session.
+     * @param headerLocator Locator for table headers (e.g., By.tagName("th")).
+     * @param rowLocator    Locator for table rows (e.g., By.tagName("tr")).
+     * @param cellLocator   Locator for table cells (e.g., By.tagName("td")).
+     * @return A list of LinkedHashMaps where keys are table headers and values are table cell data.
+     * @throws InterruptedException If the WebDriver operations are interrupted.
+     */
+    public static List<LinkedHashMap<String, String>> extractTableDataList(WebDriver driver,
+                                                                       By headerLocator,
+                                                                       By rowLocator,
+                                                                       By cellLocator) throws InterruptedException {
+        List<LinkedHashMap<String, String>> tableDataList = new ArrayList<>();
+
+        // Find all the table rows using the provided locator
+        List<WebElement> rows = driver.findElements(rowLocator);
+
+        // Find all the table headers using the provided locator
+        List<WebElement> headers = driver.findElements(headerLocator);
+        List<String> headerList = new ArrayList<>();
+
+        // Iterate through the headers to extract their text
+        for (int i = 0; i < headers.size(); i++) {
+            headerList.add(headers.get(i).getText());
+        }
+
+        // Iterate through each row (starting from 1 to skip header row)
+        for (int i = 1; i < rows.size(); i++) {
+            WebElement row = rows.get(i);
+            List<WebElement> cells = row.findElements(cellLocator);
+
+            LinkedHashMap<String, String> rowData = new LinkedHashMap<>();
+
+            // Iterate through each cell in the row
+            for (int j = 0; j < cells.size(); j++) {
+                String cellText = cells.get(j).getText(); // Extract text from the cell
+                String header = headerList.get(j); // Get the corresponding header for this cell
+                rowData.put(header, cellText); // Add cell text to the corresponding header in rowData
+            }
+
+            // Add the rowData LinkedHashMap to the tableDataList
+            tableDataList.add(rowData);
+        }
+
+        return tableDataList;
     }
 
 
