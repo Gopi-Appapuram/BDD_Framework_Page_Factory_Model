@@ -58,7 +58,15 @@ public class test {
         //driver.close();
     }
 
-
+    /**
+     * Extracts data from an HTML table and returns it as a LinkedHashMap.
+     * Each key in the map represents a table header, and the corresponding value
+     * is a list of strings representing the data in each column under that header.
+     *
+     * @param driver The WebDriver instance controlling the browser session.
+     * @return A LinkedHashMap where keys are table headers and values are lists of table cell data.
+     * @throws InterruptedException If the WebDriver operations are interrupted.
+     */
     public static LinkedHashMap<String, List<String>> extractTableData(WebDriver driver) throws InterruptedException {
         LinkedHashMap<String, List<String>> tableData = new LinkedHashMap<>();
         List<WebElement> headers = driver.findElements(By.tagName("th"));
