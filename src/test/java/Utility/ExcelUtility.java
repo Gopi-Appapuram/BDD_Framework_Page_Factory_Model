@@ -2,13 +2,16 @@ package Utility;
 
 import org.apache.poi.ss.usermodel.*;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.Test;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.*;
 
 /**
  * @author Gopi Appapuram
- * 
+ * <p>
  * Utility class to perform operations on Excel files.
  */
 public class ExcelUtility {
@@ -115,8 +118,8 @@ public class ExcelUtility {
     /**
      * Write data to multiple cells in the Excel sheet with specified cell styling.
      *
-     * @param startCol The starting column index for writing data.
-     * @param data     The array of data to write to the cells.
+     * @param startCol  The starting column index for writing data.
+     * @param data      The array of data to write to the cells.
      * @param colorName The name of the color to apply to the cell background.
      */
     public void writeData(int startCol, String[] data, String colorName) {
@@ -187,5 +190,86 @@ public class ExcelUtility {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Read data from all cells in the Excel sheet.
+     *
+     * @return A map of row numbers to a list of cell data as strings.
+     */
+    public Map<Integer, List<String>> readAllData() {
+        Map<Integer, List<String>> dataMap = new HashMap<>();
+        int rows = sheet.getPhysicalNumberOfRows();
+        for (int rowNum = 0; rowNum < rows; rowNum++) {
+            Row row = sheet.getRow(rowNum);
+            if (row != null) {
+                List<String> rowData = new ArrayList<>();
+                int cells = row.getPhysicalNumberOfCells();
+                for (int colNum = 0; colNum < cells; colNum++) {
+                    Cell cell = row.getCell(colNum);
+                    String cellValue = (cell == null) ? "" : cell.toString();
+                    rowData.add(cellValue);
+                }
+                dataMap.put(rowNum, rowData);
+            }
+        }
+        return dataMap;
+    }
+
+    /**
+     * Read data from the Excel sheet and return as a LinkedHashMap.
+     *
+     * @return A LinkedHashMap where keys are headers and values are lists of row data.
+     */
+    public LinkedHashMap<String, List<String>> readDataAsLinkedHashMap() {
+        LinkedHashMap<String, List<String>> dataMap = new LinkedHashMap<>();
+        int rows = sheet.getPhysicalNumberOfRows();
+
+        // Read headers from the first row
+        Row headerRow = sheet.getRow(0);
+        List<String> headers = new ArrayList<>();
+        for (Cell cell : headerRow) {
+            headers.add(cell.getStringCellValue());
+        }
+
+        // Initialize dataMap with empty lists for each header
+        for (String header : headers) {
+            dataMap.put(header, new ArrayList<>());
+        }
+
+        // Read data for each row starting from the second row
+        for (int rowNum = 1; rowNum < rows; rowNum++) {
+            Row row = sheet.getRow(rowNum);
+            if (row != null) {
+                for (int colNum = 0; colNum < headers.size(); colNum++) {
+                    Cell cell = row.getCell(colNum);
+                    String cellValue = (cell == null) ? "" : cell.toString();
+                    String header = headers.get(colNum);
+                    dataMap.get(header).add(cellValue);
+                }
+            }
+        }
+
+        return dataMap;
+    }
+
+    @Test
+    public void test() {
+        ExcelUtility excelUtility = new ExcelUtility("D:\\ESoft_Solutions\\AutomationPractice\\BDD_Framework\\Myntra.xlsx");
+        excelUtility.setSheet(1);
+        LinkedHashMap<String, List<String>> dataMap = excelUtility.readDataAsLinkedHashMap();
+
+        // Print dataMap
+        for (Map.Entry<String, List<String>> entry : dataMap.entrySet()) {
+            String header = entry.getKey();
+            List<String> values = entry.getValue();
+
+            System.out.println("Header: " + header);
+            System.out.println("Values: " + values);
+            System.out.println();
+        }
+
+        excelUtility.close();
+
     }
 }
